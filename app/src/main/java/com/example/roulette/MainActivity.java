@@ -1,16 +1,19 @@
 package com.example.roulette;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.animation.PathInterpolatorCompat;
 
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvResult;
@@ -42,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
         rotate.setDuration(3600);
         rotate.setFillAfter(true);
-        rotate.setInterpolator(new DecelerateInterpolator());
+        Interpolator customInterpolator = PathInterpolatorCompat.create(0.220f, 0.910f, 0.220f, 1.000f);
+        rotate.setInterpolator(customInterpolator);
         rotate.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
