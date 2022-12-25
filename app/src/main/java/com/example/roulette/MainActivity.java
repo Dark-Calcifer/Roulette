@@ -40,12 +40,13 @@ public class MainActivity extends AppCompatActivity {
     public void onClickStart(View view)
     {
         old_deegre = deegre % 360;
-        deegre = random.nextInt(3600) + 720;
+        deegre = random.nextInt(7200) + 720;
         RotateAnimation rotate = new RotateAnimation(old_deegre, deegre,
                 RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-        rotate.setDuration(3600);
+        rotate.setDuration(14400);
         rotate.setFillAfter(true);
-        Interpolator customInterpolator = PathInterpolatorCompat.create(0.220f, 0.910f, 0.220f, 1.000f);
+        Interpolator customInterpolator = PathInterpolatorCompat.create
+                (0.050f, 1.070f, 0.075f, 1.000f);
         rotate.setInterpolator(customInterpolator);
         rotate.setAnimationListener(new Animation.AnimationListener() {
             @Override
